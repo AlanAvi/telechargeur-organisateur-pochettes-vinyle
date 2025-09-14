@@ -1,0 +1,88 @@
+# Discogs Collection Downloader
+
+Ce projet permet de récupérer la collection d’un utilisateur Discogs via l’API officielle et de télécharger automatiquement les pochettes d’album associées.
+Le projet contient un script permettant de générer une mosaïque à partir des images contenues dans le dossier "covers".
+
+---
+
+## Prérequis
+
+- Python 3.8+
+- [pip](https://pip.pypa.io/en/stable/installation/)
+- Créer un compte Discogs
+
+---
+
+## Installation
+
+1. Cloner le dépôt :
+
+git clone https://github.com/ton-profil/discogs-collection-downloader.git
+cd discogs-collection-downloader
+
+2. Installer les dépendances :
+
+pip install -r requirements.txt
+
+3. Obtenir les clés Discogs
+
+- Se connecter à son compte Discogs : https://www.discogs.com/
+- Aller dans les paramètres développeur : https://www.discogs.com/settings/developers
+- Cliquer sur "Register new application"
+- Remplir les champs demandés
+- Après validation, obtenir :
+  - Consumer Key
+  - Consumer Secret
+
+4. Configurer
+
+- Créer un fichier .env à la racine du projet, basé sur .env.example
+- Renseigner ses clés et son pseudo Discogs :
+
+DISCOGS_CONSUMER_KEY=onsumer_key
+DISCOGS_CONSUMER_SECRET=consumer_secret
+DISCOGS_USERNAME=pseudo_discogs
+
+> Ne jamais partager le fichier .env publiquement.
+
+---
+
+## Utilisation
+
+1. Récupérer la collection et les pochettes :
+
+python discogs_artwork_downloader.py
+
+Le script va :
+- Ouvrir une URL pour autoriser l’application Discogs
+- Demander le code de vérification
+- Télécharger la collection complète
+- Sauvegarder les pochettes dans le dossier `covers/`
+
+2. Générer des mosaïques à partir des images téléchargées :
+
+python mosaic_generator.py
+
+Le script `mosaic_generator.py` permet de créer trois mosaïques différentes à partir du dossier `covers/` :
+- Triées par luminance moyenne (`mosaic_luminance.png`)
+- Triées par saturation moyenne (`mosaic_saturation.png`)
+- Triées par couleur dominante (`mosaic_dominant_color.png`)
+
+Paramètres modifiables :
+- `image_size` : taille de chaque vignette dans la mosaïque
+- `spacing` : espacement entre les images
+- `sort_func` : fonction de tri (luminance, saturation, couleur dominante)
+
+---
+
+## Structure du projet
+
+discogs-collection-downloader/
+│── discogs_artwork_downloader.py # Script principal pour récupérer la collection
+│── mosaic_generator.py          # Script pour générer des mosaïques
+│── requirements.txt            # Dépendances Python
+│── .env.example               # Exemple de configuration
+│── covers/                   # Dossier pour les images téléchargées
+│── README.md                  # Documentation complète
+
+---
