@@ -43,8 +43,6 @@ DISCOGS_CONSUMER_KEY=onsumer_key
 DISCOGS_CONSUMER_SECRET=consumer_secret
 DISCOGS_USERNAME=pseudo_discogs
 
-> Ne jamais partager le fichier .env publiquement.
-
 ---
 
 ## Utilisation
@@ -84,5 +82,3 @@ discogs-collection-downloader/
 │── .env.example               # Exemple de configuration
 │── covers/                   # Dossier pour les images téléchargées
 │── README.md                  # Documentation complète
-
----
