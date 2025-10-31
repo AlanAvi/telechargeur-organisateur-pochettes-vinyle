@@ -1,4 +1,4 @@
-# Discogs Collection Downloader
+# Téléchargeur et organisateur de pochettes de vinyles
 
 Ce projet permet de récupérer la collection d’un utilisateur Discogs via l’API officielle et de télécharger automatiquement les pochettes d’album associées.
 Le projet contient un script permettant de générer une mosaïque à partir des images contenues dans le dossier "covers".
